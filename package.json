@@ -39,7 +39,7 @@
     "@angular/upgrade": "~2.1.0",
     "@types/google-maps": "^3.1.27",
     "@types/hammerjs": "^2.0.32",
-    "@types/node": "^6.0.31",
+    "@types/node": "^6.0.46",
     "angular2-template-loader": "^0.5.0",
     "core-js": "^2.4.1",
     "npm-run-all": "^3.1.0",
