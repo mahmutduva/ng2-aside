@@ -1,18 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule  } from '@angular/common';
 
-import { AsideComponent } from './aside.component';
-import { AsideDirective} from './aside.directive';
+import { AsideLayoutComponent } from './aside-layout.component';
+import { AsideMenuComponent} from './aside-menu.component';
 
-export {
-    AsideComponent,
-    AsideDirective
-}
 
 @NgModule({
     imports: [ CommonModule ],
-    declarations: [AsideComponent, AsideDirective],
-    exports:  [AsideComponent, AsideDirective],
-    entryComponents: [AsideComponent]
+    declarations: [AsideLayoutComponent, AsideMenuComponent],
+    exports:  [AsideLayoutComponent, AsideMenuComponent],
 })
-export class Ng2AsideModule {}
+export class AsideModule {}

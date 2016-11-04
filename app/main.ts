@@ -3,12 +3,12 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
-import { Ng2AsideModule}  from 'ng2-aside';
+import { AsideModule}  from 'ng2-aside';
 import { AppComponent }   from './app.component';
 
 
 @NgModule({
-    imports: [BrowserModule, Ng2AsideModule],
+    imports: [BrowserModule, AsideModule],
     declarations: [AppComponent],
     bootstrap: [ AppComponent ],
     providers: []
