@@ -1,6 +1,7 @@
 import {
     Component,
-    ViewEncapsulation
+    ViewEncapsulation,
+    AfterContentInit
 } from '@angular/core';
 
 
@@ -30,29 +31,33 @@ import {
                         transition: transform 400ms ease;
                     }
 
-                    .ng2-aside-back-drop{
-                        position: fixed;
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
-                        left: 0;
-                        z-index: 99;
-                        background: #000000;
-                        opacity: 0;
-                        -webkit-transition: opacity .15s linear;
-                        -o-transition: opacity .15s linear;
-                        transition: opacity .15s linear;
-                    }
-                    
-                    .ng2-aside-back-drop.in{
-                        opacity: .1;
-                    }`],
+                `],
     encapsulation: ViewEncapsulation.None
 
 })
 
-export class AsideMenuComponent {
+export class AsideMenuComponent implements AfterContentInit {
 
+
+      @Input() side: 'left' | 'right' = 'left';
+
+      @Input() pushContent: boolean;
+
+      @Input() isBackdrop: boolean;
+
+      @Input() width:string  =  '240px'
+
+
+
+      @Output('open') onOpen = new EventEmitter<void>();
+      
+      @Output('close') onClose = new EventEmitter<void>();
+
+
+      constructor(private _elementRef: ElementRef) {
+
+      }
+    
 }
 
 
