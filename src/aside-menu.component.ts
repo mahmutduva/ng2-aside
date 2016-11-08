@@ -1,7 +1,10 @@
 import {
     Component,
     ViewEncapsulation,
-    AfterContentInit
+    AfterContentInit,
+    Input,
+    Output,
+    EventEmitter
 } from '@angular/core';
 
 
@@ -41,11 +44,13 @@ export class AsideMenuComponent implements AfterContentInit {
 
       @Input() side: 'left' | 'right' = 'left';
 
-      @Input() pushContent: boolean;
+      @Input() sideMode: 'over' | 'push' = 'over';
 
       @Input() isBackdrop: boolean;
 
       @Input() width:string  =  '240px'
+
+      isOpened : boolean = false;
 
 
 
@@ -54,8 +59,21 @@ export class AsideMenuComponent implements AfterContentInit {
       @Output('close') onClose = new EventEmitter<void>();
 
 
-      constructor(private _elementRef: ElementRef) {
 
+      open(): Promise<void> {
+          return this.toggle(true);
+      }
+
+      close(): Promise<void>{
+          return this.toggle(false);
+      }
+
+      toggle(isOpen:boolean = !this.isOpened): Promise<void>{
+          if(isOpen === this.isOpened){
+            return Promise.resolve(null);
+          }
+
+          this.isOpened = isOpen;
       }
     
 }

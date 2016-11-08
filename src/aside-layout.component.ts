@@ -1,8 +1,12 @@
 import {
     Component,
     ViewEncapsulation,
-    AfterContentInit
+    AfterContentInit,
+    ContentChildren
 } from '@angular/core';
+
+import { AsideMenuComponent } from 'aside-menu.component'
+
 
 
 @Component({
@@ -49,6 +53,10 @@ import {
 export class AsideLayoutComponent implements AfterContentInit{
 
 
+    public _left: AsideMenuComponent;
+    private _right: AsideMenuComponent;
+
+
     private getStyles():Object {
         return {
             transform: `translate3d(0px, 0px, 0px)`
@@ -56,12 +64,11 @@ export class AsideLayoutComponent implements AfterContentInit{
     }
 
 
-    private showBackdrop():boolean{
-       return isAsideOpen;
+    private showBackdrop(side: AsideMenuComponent):boolean{
+       return (side != null && side.isOpened && side.isBackdrop)
     }
 
-
-   
+  
 
 }
 
