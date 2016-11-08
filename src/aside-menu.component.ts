@@ -12,6 +12,9 @@ import {
 @Component({
     selector: 'aside-menu',
     template: `<ng-content></ng-content>`,
+    host : {
+        '[style.width]' : 'width'
+    },
     styles: [`        .aside-menu{
                         background-color: #28374f;
                         position: absolute;
@@ -21,7 +24,6 @@ import {
                         overflow: hidden;
                         min-height: 100%;
                         max-height: 100%;
-                        width: 275px;
                         display: block;
                        }
 
@@ -80,7 +82,7 @@ export class AsideMenuComponent implements AfterContentInit {
           this.isOpened = isOpen;
       }
 
-      @HostBinding('class.aside-menu') true;
+      @HostBinding('class.aside-menu') asideMenuClass = 'aside-menu';
 
       @HostBinding('class.aside-left') get _asideLeft() {
            return this.side == 'left';
