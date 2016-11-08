@@ -4,15 +4,15 @@ import {
     AfterContentInit,
     Input,
     Output,
-    EventEmitter
+    EventEmitter,
+    HostBinding
 } from '@angular/core';
 
 
 @Component({
     selector: 'aside-menu',
     template: `<ng-content></ng-content>`,
-    styles: [`
-                    .ng2-aside-menu{
+    styles: [`        .aside-menu{
                         background-color: #28374f;
                         position: absolute;
                         top: 0;
@@ -23,18 +23,23 @@ import {
                         max-height: 100%;
                         width: 275px;
                         display: block;
-                    }
-                    
-                    .ng2-aside-open{
-                        display: block;
-                    }
+                       }
 
-                    .ng2-aside-animate{
+                      .aside-left{
+                        left: 0;
+                      }
+                      .aside-right{
+                        right: 0;
+                      }
+                      .aside-animate{
                         -webkit-transition: -webkit-transform 400ms ease;
                         transition: transform 400ms ease;
+                      }
+                    
+                    .aside-open{
+                        display: block;
                     }
-
-                `],
+            `],
     encapsulation: ViewEncapsulation.None
 
 })
@@ -59,7 +64,6 @@ export class AsideMenuComponent implements AfterContentInit {
       @Output('close') onClose = new EventEmitter<void>();
 
 
-
       open(): Promise<void> {
           return this.toggle(true);
       }
@@ -74,6 +78,16 @@ export class AsideMenuComponent implements AfterContentInit {
           }
 
           this.isOpened = isOpen;
+      }
+
+      @HostBinding('class.aside-menu') true;
+
+      @HostBinding('class.aside-left') get _asideLeft() {
+           return this.side == 'left';
+      }
+
+      @HostBinding('class.aside-right') get _asideRight() {
+           return this.side == 'right';
       }
     
 }
