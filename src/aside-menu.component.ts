@@ -53,7 +53,7 @@ export class AsideMenuComponent implements AfterContentInit {
 
       @Input() sideMode: 'over' | 'push' = 'over';
 
-      @Input() isBackdrop: boolean;
+      @Input() isBackdrop: boolean = false;
 
       @Input() width:string  =  '240px'
 
