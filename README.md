@@ -16,4 +16,4 @@ $ npm install ng2-aside
 | side             | left                           |         |
 | width            | 240px                          |         |
 | is-backdrop      | false                          |         |
-| sideMode         | over                           |         |
+| side-mode        | over                           |         |
