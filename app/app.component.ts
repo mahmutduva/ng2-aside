@@ -3,10 +3,7 @@ import {Component} from '@angular/core';
 
 @Component({
     selector: 'my-app',
-    template: `
-
-                
-                <aside-layout>
+    template: `<aside-layout>
                     <aside-menu #left1 side="left" width="240px" is-backdrop="true" side-mode="over">
                         <ul>
                             <li>Homepage</li>
@@ -14,7 +11,21 @@ import {Component} from '@angular/core';
                             <li>Contact</li>
                         </ul>
                     </aside-menu>
-                    <aside-menu #right1 side="right" width="320px" is-backdrop="true" side-mode="push">
+                    <aside-menu #left2 side="left" width="240px" is-backdrop="true" side-mode="push">
+                        <ul>
+                            <li>Homepage</li>
+                            <li>About</li>
+                            <li>Contact</li>
+                        </ul>
+                    </aside-menu>
+                    <aside-menu #right1 side="right" width="320px" is-backdrop="true" side-mode="over">
+                        <ul>
+                            <li>Homepage</li>
+                            <li>About</li>
+                            <li>Contact</li>
+                        </ul>
+                    </aside-menu>
+                    <aside-menu #right2 side="right" width="320px" is-backdrop="true" side-mode="push">
                         <ul>
                             <li>Homepage</li>
                             <li>About</li>
@@ -28,12 +39,17 @@ import {Component} from '@angular/core';
 
                             <p>Proin pellentesque risus id ligula rhoncus, in convallis turpis auctor. Praesent laoreet mi augue, id ornare ante cursus sed. Nulla suscipit ligula eget tempus viverra. Praesent vitae convallis erat. Sed eu arcu tortor. Pellentesque cursus quam metus, vitae rhoncus turpis placerat sit amet. Nullam eu lacinia metus. In semper lectus id turpis lobortis elementum. Aenean consectetur magna vel hendrerit condimentum. Aenean porta ut eros vel laoreet.</p>
                             <p>Pellentesque imperdiet pharetra consequat. Donec et neque at turpis tincidunt mattis. Sed posuere, quam vel scelerisque porta, lorem dui molestie libero, ac pretium turpis massa non ligula. Curabitur elit magna, semper vel luctus id, ullamcorper et ex. Vivamus gravida blandit nisl in mollis. Duis tempor a lacus elementum consequat. Donec sagittis libero ac dapibus luctus. Pellentesque ut varius lacus. Phasellus tristique dapibus risus quis facilisis. Sed at dapibus turpis. Duis hendrerit augue eget velit ultrices commodo. Integer ut felis vel nunc vulputate lacinia. Cras felis lorem, eleifend sit amet purus ut, feugiat luctus nibh. Proin ullamcorper auctor congue. Vivamus finibus nisl sit amet ligula sagittis efficitur.</p>
-                            <button type="button" (click)="left1.open()">sToggle Left Aside</button>
-                            <button type="button" (click)="right1.open()">Open Right Aside</button>
+                            <div style="margin:auto; display:table">
+                                <button type="button" (click)="left1.toggle()">Toggle Left Over Aside</button>
+                                <button type="button" (click)="right1.toggle()">Toggle Right Over Aside</button>
+                            </div>
+                            <div style="margin:auto; display:table">
+                                <button type="button" (click)="left2.toggle()">Toggle Left Push Aside</button>
+                                <button type="button" (click)="right2.toggle()">Toggle Right Push Aside</button>
+                            </div>
                         </div>
                     </div>
-                </aside-layout>
-                `,
+                </aside-layout>`,
 })
 
 export class AppComponent {

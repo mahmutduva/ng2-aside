@@ -25,7 +25,7 @@ import {DomSanitizer} from '@angular/platform-browser';
         '[class.aside-left]' : '_asideLeft',
         '[class.aside-right]' : '_asideRight'
     },
-    styles: [`        .aside-menu{
+    styles: [`.aside-menu{
                         background-color: #28374f;
                         position: absolute;
                         top: 0;
@@ -43,16 +43,14 @@ import {DomSanitizer} from '@angular/platform-browser';
                       .aside-right{
                         right: 0;
                       }
-                      .aside-animate{
+                      .aside-menu-animate{
                         -webkit-transition: -webkit-transform 400ms ease;
                         transition: transform 400ms ease;
                       }
                     
                     .aside-over{
                         z-index : 99;
-                    }
-
-            `],
+                    }`],
     encapsulation: ViewEncapsulation.None
 
 })
@@ -143,7 +141,7 @@ export class AsideMenuComponent implements AfterContentInit {
                   return this.sanitizer.bypassSecurityTrustStyle('translate3d( 100%, 0, 0)');
               }
               else if(this.sideMode == 'over' && this.side == 'right'){
-                  return 'translate3d('+ '-' + this.width +', 0, 0);'
+                  return this.sanitizer.bypassSecurityTrustStyle('translate3d('+ '-' + this.width +', 0, 0)');
               }
           }
 
