@@ -4,7 +4,8 @@ import {
     AfterContentInit,
     Input,
     Output,
-    EventEmitter
+    EventEmitter,
+    ChangeDetectionStrategy
 } from '@angular/core';
 
 import {DomSanitizer} from '@angular/platform-browser';
@@ -51,7 +52,8 @@ import {DomSanitizer} from '@angular/platform-browser';
                     .aside-over{
                         z-index : 99;
                     }`],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 
 })
 
@@ -69,25 +71,37 @@ export class AsideMenuComponent implements AfterContentInit {
       isOpened : boolean = false;
 
 
-
-      @Output('open') onOpen = new EventEmitter<void>();
+      @Output() onOpen = new EventEmitter<void>();
       
-      @Output('close') onClose = new EventEmitter<void>();
+      @Output() onClose = new EventEmitter<void>();
+
+
 
 
       open(): Promise<void> {
           return this.toggle(true);
       }
 
+
       close(): Promise<void>{
           return this.toggle(false);
       }
 
+
       toggle(isOpen:boolean = !this.isOpened): Promise<void>{
+
           if(isOpen === this.isOpened){
             return Promise.resolve(null);
           }
+
           this.isOpened = isOpen;
+
+          if (isOpen) {
+            this.onOpen.emit();
+          } else {
+            this.onClose.emit();
+          }
+
       }
 
       constructor(private sanitizer: DomSanitizer) {}

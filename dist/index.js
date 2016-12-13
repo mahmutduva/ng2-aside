@@ -10,20 +10,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
-var aside_component_1 = require('./aside.component');
-var Ng2AsideModule = (function () {
-    function Ng2AsideModule() {
+var aside_menu_component_1 = require('./aside-menu.component');
+var aside_layout_component_1 = require('./aside-layout.component');
+var AsideModule = (function () {
+    function AsideModule() {
     }
-    Ng2AsideModule = __decorate([
+    AsideModule = __decorate([
         core_1.NgModule({
             imports: [common_1.CommonModule],
-            declarations: [aside_component_1.AsideComponent],
-            exports: [aside_component_1.AsideComponent],
-            entryComponents: [aside_component_1.AsideComponent]
+            declarations: [aside_menu_component_1.AsideMenuComponent, aside_layout_component_1.AsideLayoutComponent],
+            exports: [aside_menu_component_1.AsideMenuComponent, aside_layout_component_1.AsideLayoutComponent],
         }), 
         __metadata('design:paramtypes', [])
-    ], Ng2AsideModule);
-    return Ng2AsideModule;
+    ], AsideModule);
+    return AsideModule;
 }());
-exports.Ng2AsideModule = Ng2AsideModule;
+exports.AsideModule = AsideModule;
 //# sourceMappingURL=index.js.map

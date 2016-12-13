@@ -1,2 +1,2 @@
-export declare class Ng2AsideModule {
+export declare class AsideModule {
 }

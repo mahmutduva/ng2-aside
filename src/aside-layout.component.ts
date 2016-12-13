@@ -1,19 +1,16 @@
-import {
-    Component,
-    ViewEncapsulation,
-    AfterContentInit
-} from '@angular/core';
-
-import { AsideMenuComponent } from 'aside-menu.component'
-
+import { Component, 
+         ContentChildren, 
+         ViewEncapsulation, 
+         AfterContentInit, 
+         QueryList } from '@angular/core';
+import {AsideMenuComponent} from './aside-menu.component'
 
 
 @Component({
     selector     : 'aside-layout',
-    template     : `<div class="aside-backdrop" (click)="_closeModalAside()"
-                            [class.in]="showBackdrop()"></div>
+    template     : `<div class="aside-backdrop" (click)="_closeModalAside()"></div>
                     <ng-content select="aside-menu"></ng-content>
-                    <div class="aside-content" [ngStyle]="getStyles()">
+                    <div class="aside-content">
                         <ng-content></ng-content>
                     </div>`,
     styles       : [`.aside-content{
@@ -46,27 +43,27 @@ import { AsideMenuComponent } from 'aside-menu.component'
                           opacity : .1;
                       }
                     }`],
-    encapsulation: ViewEncapsulation.None
-})
+    encapsulation: ViewEncapsulation.None,                
+ })
 
 export class AsideLayoutComponent implements AfterContentInit{
+    @ContentChildren(AsideMenuComponent) _asideMenus: QueryList<AsideMenuComponent>;
 
-    private _asideMenu : AsideMenuComponent
-
-    debugger
-
-    private getStyles():Object {
-        return {
-            transform: `translate3d(0px, 0px, 0px)`
-        };
+    ngAfterContentInit() {
+        this._asideMenus.forEach((aside: AsideMenuComponent) => {
+            this._watchAsideToggle(aside);
+        });
     }
 
+    private _watchAsideToggle(aside){
+       if (!aside) { return; }
+       aside.onOpen.subscribe(() => this._setLayoutClass(aside, true));
 
-    private showBackdrop(side: AsideMenuComponent):boolean{
-       return (side != null && side.isOpened && side.isBackdrop)
     }
 
-
+    private _setLayoutClass(aside: AsideMenuComponent, bool: boolean): void {
+        debugger
+    }
 
 
 }

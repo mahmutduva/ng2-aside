@@ -4,28 +4,28 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'my-app',
     template: `<aside-layout>
-                    <aside-menu #left1 side="left" width="240px" is-backdrop="true" side-mode="over">
+                    <aside-menu #left1 side="left" width="240px" isBackdrop="true" sideMode="over">
                         <ul>
                             <li>Homepage</li>
                             <li>About</li>
                             <li>Contact</li>
                         </ul>
                     </aside-menu>
-                    <aside-menu #left2 side="left" width="240px" is-backdrop="true" side-mode="push">
+                    <aside-menu #left2 side="left" width="240px" isBackdrop="true" sideMode="push">
                         <ul>
                             <li>Homepage</li>
                             <li>About</li>
                             <li>Contact</li>
                         </ul>
                     </aside-menu>
-                    <aside-menu #right1 side="right" width="320px" is-backdrop="true" side-mode="over">
+                    <aside-menu #right1 side="right" width="320px" isBackdrop="true" sideMode="over">
                         <ul>
                             <li>Homepage</li>
                             <li>About</li>
                             <li>Contact</li>
                         </ul>
                     </aside-menu>
-                    <aside-menu #right2 side="right" width="320px" is-backdrop="true" side-mode="push">
+                    <aside-menu #right2 side="right" width="320px" isBackdrop="true" sideMode="push">
                         <ul>
                             <li>Homepage</li>
                             <li>About</li>
