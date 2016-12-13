@@ -57,12 +57,18 @@ export class AsideLayoutComponent implements AfterContentInit{
 
     private _watchAsideToggle(aside){
        if (!aside) { return; }
-       aside.onOpen.subscribe(() => this._setLayoutClass(aside, true));
+       aside.onOpen.subscribe(()  => this._setLayoutClass(aside, true));
+       aside.onClose.subscribe(() => this._setLayoutClass(aside, false));
 
     }
 
-    private _setLayoutClass(aside: AsideMenuComponent, bool: boolean): void {
-        debugger
+    private _setLayoutClass(aside: AsideMenuComponent, open: boolean): void {
+        if(open){
+
+        }
+        else{
+
+        }
     }
 
 
