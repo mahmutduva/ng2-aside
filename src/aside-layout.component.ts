@@ -2,8 +2,12 @@ import { Component,
          ContentChildren, 
          ViewEncapsulation, 
          AfterContentInit, 
-         QueryList } from '@angular/core';
-import {AsideMenuComponent} from './aside-menu.component'
+         QueryList, 
+         ElementRef } from '@angular/core';
+
+import {AsideMenuComponent} from './aside-menu.component';
+import {DomSanitizer} from '@angular/platform-browser';
+
 
 
 @Component({
@@ -26,6 +30,8 @@ import {AsideMenuComponent} from './aside-menu.component'
                         -webkit-transform: none;
                         transform: none;
                         z-index: 1;
+                        -webkit-transition: -webkit-transform 400ms ease;
+                        transition: transform 400ms ease;
                       .aside-backdrop{
                            position: fixed;
                             top: 0;
@@ -49,6 +55,8 @@ import {AsideMenuComponent} from './aside-menu.component'
 export class AsideLayoutComponent implements AfterContentInit{
     @ContentChildren(AsideMenuComponent) _asideMenus: QueryList<AsideMenuComponent>;
 
+    constructor(private _el: ElementRef) {}
+
     ngAfterContentInit() {
         this._asideMenus.forEach((aside: AsideMenuComponent) => {
             this._watchAsideToggle(aside);
@@ -63,11 +71,16 @@ export class AsideLayoutComponent implements AfterContentInit{
     }
 
     private _setLayoutClass(aside: AsideMenuComponent, open: boolean): void {
-        if(open){
-
+        if(open && aside.sideMode == 'push'){
+          if(aside.side == 'left'){
+             this._el.nativeElement.querySelector('.aside-content').style.transform = 'translate3d(' + aside.width + ', 0, 0)';
+          }
+          else if(aside.side == 'right'){
+             this._el.nativeElement.querySelector('.aside-content').style.transform = 'translate3d('+ '-' + aside.width +', 0, 0)';
+          }
         }
         else{
-
+          this._el.nativeElement.querySelector('.aside-content').style.transform = 'translate3d(0, 0, 0)';
         }
     }
 
