@@ -12,7 +12,6 @@ $ npm install ng2-aside
 
 ```TypeScript
 // main.ts
-// The browser platform with a compiler
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { NgModule }       from '@angular/core';
@@ -51,7 +50,6 @@ export class AppComponent {
 
 
 ```Html
-//template.html
 <aside-layout>
                     <aside-menu #left1 side="left" width="240px" isBackdrop="true" sideMode="over">
                         <ul>

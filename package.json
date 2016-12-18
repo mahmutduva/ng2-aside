@@ -1,6 +1,6 @@
 {
   "name": "ng2-aside",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Angular 2 Aside",
   "main": "dist/ng2-aside.umd.js",
   "module": "dist/index.js",
