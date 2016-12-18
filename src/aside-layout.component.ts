@@ -52,12 +52,17 @@ import {DomSanitizer} from '@angular/platform-browser';
     encapsulation: ViewEncapsulation.None,                
  })
 
-export class AsideLayoutComponent implements AfterContentInit{
+export class AsideLayoutComponent implements AfterContentInit {
+
+    private _asideContent: any;
+
     @ContentChildren(AsideMenuComponent) _asideMenus: QueryList<AsideMenuComponent>;
 
-    constructor(private _el: ElementRef) {}
+    constructor(private _elementRef: ElementRef) {
+    }
 
     ngAfterContentInit() {
+        this._asideContent = this._elementRef.nativeElement.querySelector('.aside-content');
         this._asideMenus.forEach((aside: AsideMenuComponent) => {
             this._watchAsideToggle(aside);
         });
@@ -73,14 +78,14 @@ export class AsideLayoutComponent implements AfterContentInit{
     private _setLayoutClass(aside: AsideMenuComponent, open: boolean): void {
         if(open && aside.sideMode == 'push'){
           if(aside.side == 'left'){
-             this._el.nativeElement.querySelector('.aside-content').style.transform = 'translate3d(' + aside.width + ', 0, 0)';
+             this._asideContent.style.transform = 'translate3d(' + aside.width + ', 0, 0)';
           }
           else if(aside.side == 'right'){
-             this._el.nativeElement.querySelector('.aside-content').style.transform = 'translate3d('+ '-' + aside.width +', 0, 0)';
+             this._asideContent.style.transform = 'translate3d('+ '-' + aside.width +', 0, 0)';
           }
         }
         else{
-          this._el.nativeElement.querySelector('.aside-content').style.transform = 'translate3d(0, 0, 0)';
+          this._asideContent.style.transform = 'translate3d(0, 0, 0)';
         }
     }
 
