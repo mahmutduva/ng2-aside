@@ -1,14 +1,13 @@
 import {
     Component,
     ViewEncapsulation,
-    AfterContentInit,
     Input,
     Output,
     EventEmitter,
     ChangeDetectionStrategy
 } from '@angular/core';
 
-import {DomSanitizer} from '@angular/platform-browser';
+import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 
 @Component({
     selector: 'aside-menu',
@@ -57,7 +56,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 
 })
 
-export class AsideMenuComponent implements AfterContentInit {
+export class AsideMenuComponent{
 
 
       @Input() side: 'left' | 'right' = 'left';
@@ -149,7 +148,7 @@ export class AsideMenuComponent implements AfterContentInit {
           }
       }
 
-      get _asideOpened() {
+      get _asideOpened():SafeStyle {
           if(this.isOpened){
               if(this.sideMode == 'over' && this.side == 'left'){
                   return this.sanitizer.bypassSecurityTrustStyle('translate3d( 100%, 0, 0)');
@@ -160,6 +159,8 @@ export class AsideMenuComponent implements AfterContentInit {
           }
 
       }
+
+
     
 }
 

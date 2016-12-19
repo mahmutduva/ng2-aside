@@ -6,7 +6,6 @@ import { Component,
          ElementRef } from '@angular/core';
 
 import {AsideMenuComponent} from './aside-menu.component';
-import {DomSanitizer} from '@angular/platform-browser';
 
 
 

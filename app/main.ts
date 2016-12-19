@@ -3,7 +3,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
-import { AsideModule}  from 'ng2-aside';
+import { AsideModule}     from 'ng2-aside';
 import { AppComponent }   from './app.component';
 
 
