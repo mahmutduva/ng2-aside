@@ -104,12 +104,12 @@ export class AppComponent {
 
 ### Configuration
 
-| Parameter        | Default                        |         |
-| :-------------   |:-------------------------------| :-----  |
-| side             | left                           |         |
-| width            | 240px                          |         |
-| isBackdrop       | false                          |         |
-| sideMode         | over                           |         |
+| Parameter        | Default                        |
+| :-------------   |:-------------------------------|
+| side             | left                           |
+| width            | 240px                          |
+| isBackdrop       | false                          |
+| sideMode         | over                           |
 
 
 
